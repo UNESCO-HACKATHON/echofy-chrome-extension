@@ -1,0 +1,77 @@
+/* Sidebar container */
+#mySidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 320px; /* adjust as needed */
+  background-color: #2B2D42; /* Deep Indigo */
+  box-shadow: -2px 0 8px rgba(0,0,0,0.3);
+  z-index: 999999;
+  transform: translateX(100%); /* hidden by default */
+  transition: transform 0.3s ease;
+  color: #FFFFFF; /* default text color */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sidebar active/open */
+#mySidebar.active {
+  transform: translateX(0);
+}
+
+/* Buttons inside sidebar */
+#mySidebar button {
+  background-color: #00FFF7; /* Neon Cyan */
+  color: #2B2D42; /* text color contrasting with button */
+  border: none;
+  padding: 8px 16px;
+  margin: 5px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Button hover effect */
+#mySidebar button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #00FFF7;
+}
+
+/* Alerts / Warnings inside sidebar */
+#mySidebar .alert {
+  background-color: #FF6B6B; /* Soft Coral */
+  color: #FFFFFF;
+  padding: 6px 10px;
+  margin: 6px 0;
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Floating Bubble */
+#echofyBubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #2B2D42; /* Deep Indigo */
+  color: #00FFF7; /* Neon Cyan icon */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2147483647;
+  font-size: 28px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#echofyBubble:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px #00FFF7;
+}

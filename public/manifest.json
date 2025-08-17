@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Echofy",
+  "version": "1.0",
+  "description": "Detect misinformation and AI-generated content in text",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"]
+    }
+  ]
+  
+
+,
+"icons": {
+  "16": "icon16.png",
+  "48": "icon48.png",
+  "128": "icon128.png"
+},
+"action": {
+  "default_icon": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}}
