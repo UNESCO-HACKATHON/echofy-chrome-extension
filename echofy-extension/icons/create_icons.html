@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Echofy Icon Generator</title>
+</head>
+<body>
+    <h3>Echofy Icon Generator</h3>
+    <p>This will generate placeholder icons. Open in browser and save the generated images.</p>
+    
+    <canvas id="icon16" width="16" height="16" style="border: 1px solid #ccc; margin: 5px;"></canvas>
+    <span>16x16</span><br>
+    
+    <canvas id="icon48" width="48" height="48" style="border: 1px solid #ccc; margin: 5px;"></canvas>
+    <span>48x48</span><br>
+    
+    <canvas id="icon128" width="128" height="128" style="border: 1px solid #ccc; margin: 5px;"></canvas>
+    <span>128x128</span><br>
+
+    <script>
+        function createIcon(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Background circle
+            ctx.fillStyle = '#2B2D42';
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2 - 1, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Letter E
+            ctx.fillStyle = '#00FFF7';
+            ctx.font = `bold ${Math.floor(size * 0.6)}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('E', size/2, size/2);
+        }
+        
+        createIcon('icon16', 16);
+        createIcon('icon48', 48);
+        createIcon('icon128', 128);
+        
+        // Instructions
+        setTimeout(() => {
+            alert('Right-click each icon and "Save image as..." to save as PNG files:\nicon16.png, icon48.png, icon128.png');
+        }, 500);
+    </script>
+</body>
+</html> 
