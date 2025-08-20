@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Echofy Sidebar</title>
+  <link rel="stylesheet" href="sidebar.css">
+</head>
+<body>
+  <div class="sidebar-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-circle">E</div>
+          <h1 class="app-name">Echofy</h1>
+        </div>
+      </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="tab-nav">
+      <button class="tab-button active" data-tab="analyze" aria-label="Analyze tab">
+        <span class="tab-icon">🔍</span>
+        Analyze
+      </button>
+      <button class="tab-button" data-tab="history" aria-label="History tab">
+        <span class="tab-icon">📋</span>
+        History
+      </button>
+      <button class="tab-button" data-tab="about" aria-label="About tab">
+        <span class="tab-icon">ℹ️</span>
+        About
+      </button>
+    </nav>
+
+    <!-- Tab Content -->
+    <main class="tab-content">
+      <!-- Analyze Tab -->
+      <div class="tab-panel active" data-panel="analyze">
+        <div class="analyze-container">
+          <div class="input-section">
+            <label for="text-input" class="input-label">Text to Analyze</label>
+            <textarea 
+              id="text-input" 
+              class="text-input" 
+              placeholder="Paste text here or select text on the page and use the context menu..."
+              rows="4"
+              aria-describedby="input-hint"
+            ></textarea>
+            <div id="input-hint" class="input-hint">
+              Tip: Right-click selected text or double-click to analyze automatically
+            </div>
+          </div>
+          
+          <button id="analyze-btn" class="analyze-button" disabled>
+            <span class="button-icon">⚡</span>
+            Analyze Selected Text
+          </button>
+
+          <!-- Loading State -->
+          <div id="loading-state" class="loading-state hidden">
+            <div class="loading-spinner"></div>
+            <p>Analyzing text...</p>
+          </div>
+
+          <!-- Results Container -->
+          <div id="results-container" class="results-container hidden">
+            <div id="confidence-indicator" style="display:none"></div>
+            <!-- Credibility Score -->
+            <div class="result-card credibility-card">
+              <div class="card-header">
+                <h3>Credibility Score</h3>
+              </div>
+              <div class="credibility-score">
+                <div class="score-circle">
+                  <span id="credibility-number" class="score-number">--</span>
+                </div>
+                <div class="score-label">out of 100</div>
+              </div>
+            </div>
+
+            <!-- Bias & AI Analysis -->
+            <div class="result-card analysis-card">
+              <div class="card-header">
+                <h3>Content Analysis</h3>
+              </div>
+              <div class="analysis-items">
+                <div class="analysis-item">
+                  <label>Bias Level:</label>
+                  <span id="bias-badge" class="badge badge-low">Low</span>
+                </div>
+                <div class="analysis-item">
+                  <label>AI Generated:</label>
+                  <span id="ai-indicator" class="indicator">Unlikely</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fact Checks -->
+            <div class="result-card fact-checks-card">
+              <div class="card-header">
+                <h3>Fact Checks</h3>
+              </div>
+              <div id="fact-checks-list" class="fact-checks-list">
+                <p class="no-fact-checks">No fact-check matches found.</p>
+              </div>
+            </div>
+
+            <!-- Media Literacy Tip -->
+            <div class="result-card tip-card">
+              <div class="card-header">
+                <h3>💡 Media Literacy Tip</h3>
+              </div>
+              <p id="mil-tip" class="tip-content">
+                Always verify information from multiple trusted sources before sharing.
+              </p>
+            </div>
+
+            <!-- Original Text (Collapsible) -->
+            <div class="result-card text-card">
+              <div class="card-header collapsible" id="text-toggle">
+                <h3>Original Text</h3>
+                <span class="toggle-icon">▼</span>
+              </div>
+              <div id="original-text" class="original-text collapsed">
+                <p id="analyzed-text-content"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- History Tab -->
+      <div class="tab-panel" data-panel="history">
+        <div class="history-container">
+          <div class="history-header">
+            <h2>Analysis History</h2>
+            <button id="clear-history" class="clear-button">Clear All</button>
+          </div>
+          <div id="history-list" class="history-list">
+            <div class="empty-history">
+              <div class="empty-icon">📭</div>
+              <p>No analyses yet</p>
+              <small>Your last 10 analyses will appear here</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Tab -->
+      <div class="tab-panel" data-panel="about">
+        <div class="about-container">
+          <div class="about-content">
+            <div class="about-section">
+              <h2>About Echofy</h2>
+              <p>
+                Echofy is a browser extension designed to help users evaluate the credibility 
+                and bias of online content. It analyzes selected text for potential 
+                misinformation indicators, bias patterns, and AI-generated content markers.
+              </p>
+            </div>
+            
+            <div class="about-section">
+              <h3>How It Works</h3>
+              <ul>
+                <li>Select text on any webpage</li>
+                <li>Right-click and choose "Analyze with Echofy"</li>
+                <li>View credibility scores, bias analysis, and fact-check resources</li>
+                <li>Access your analysis history for reference</li>
+              </ul>
+            </div>
+
+            <div class="about-section">
+              <h3>Privacy & Data</h3>
+              <p>
+                Echofy processes text locally in your browser. No text content is sent to 
+                external servers. Analysis history is stored locally on your device and 
+                can be cleared at any time.
+              </p>
+            </div>
+
+            <div class="version-info">
+              <small>Version 1.0.0 • Built for accuracy and privacy</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="sidebar.js"></script>
+</body>
+</html> 
